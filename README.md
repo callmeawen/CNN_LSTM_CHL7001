@@ -47,7 +47,16 @@ pd.DataFrame(data)
 Our data is the historical daily stock price of PG and BAC from 01/01/2017 to 01/01/2019, downloaded from Yahoo Finance. The datasets include a daily open price, the daily highest price, the daily lowest price, a close price, an adjusted close price and the volume.
 
 <center><img src='pics/sampledata.PNG' width=500></img></center>
-_sample data_
+
+_figure 1: sample data_
+
+<center><img src='pics/pgclose.png' width=500></img></center>
+
+_figure 2: close price for PG_
+
+<center><img src='pics/bacclose.png' width=500></img></center>
+
+_figure 3: close price for BAC_
 
 ## 3.1. Technical indicators <a class="anchor" id="technicalind"></a>
 5 days and 100 days moving averages are applied to smooth temporary and random price fluctuations over time. A buy signal happens when the short-duration MA crosses above the long-duration MA. In professional terms, this is called a "golden cross." On the contrary, the trend of price drops and generates a sell signal when two lines cross the other way. This is known as a "dead cross. " Some other technical indicators tracked are Average True Range, Bollinger Bands, Rate of Change, Force Index, Williams percentage Range and Moving Average Convergence Divergence. The third dataset is the S&P 500 in Figure 5, as a benchmark to represent the overall economy.
