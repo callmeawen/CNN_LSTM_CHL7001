@@ -6,7 +6,10 @@ unfinished
 * [Introduction](#overview)
 * [The data](#thedata)
     * [Technical indicators](#technicalind)
-* [The result](#theresult)
+* [Model Explanation](#Model)
+    * [Model Explanation LSTM continued](#Model.c)
+    * [1D-CNN](#cnn)
+    * [Test trading](#trading)
 * [What is next?](#whatisnext)
 * [Disclaimer](#disclaimer)
 
@@ -63,21 +66,44 @@ _figure 3: close price for BAC_
 
 A lot of investors follow technical indicators. We included the most popular indicators as independent features.
 
+**NOTE:** We are not showing Technical Indicator Graphs here. Since They will be shown in our report. 
+
+# 4. Model Explanation <a class="anchor" id="Model"></a>
+
+## 4.1 Model Explanation LSTM <a class="anchor" id="Model"></a>
+
+Long short term memory is similar to Recurrent Neural Network (RNN) in deep learning. It captures dynamic nonlinear characters and transfers previous relevant things to the present.
+
+<center><img src='pics/lstmdiagram.png' width=500></img></center>
+
+_figure 4:  architecture of LSTM_
 
 
+## 4.2 Model Explanation LSTM continued  <a class="anchor" id="Model.c"></a>
+
+As the new information flows through different gates (the input gate zi , the forget gate zf and the output gate zo) in memory blocks, it is read, forgotten and stored. Then, the cell state and the hidden state are updated and transferred to the next cell. For instance, previous cell state ct-1 is used to store the information kept from the last step: an increasing trend of the stock price in the past. Previous hidden state ht-1 is used to receive outputs from last cells: the closing price of the stock yesterday. Next, they are combined with the current input state at xt, which can fresh information: an unexpected major personnel change today. Finally, an accurate output is received.
 
 
+## 4.3 1D-CNN  <a class="anchor" id="cnn"></a>
 
+CNN is famous for diagram recognization. But Can be also used in dimentional reduction or feature aggregation. So we are going to pass features into sparse autoencoders with a convolution neural network through a 1 dimension convolution layer and global max-pooling layer before LSTM, we can reduce overfitting and improve forecasting performance if we can.
 
+## 4.4 Test trading  <a class="anchor" id="trading"></a>
 
+Four trading algorithms are developed with an initial capital of $1000 in the research in comparison of the rate of returns by different models and parameters. 
+All in or all out: 
 
+If the prediction increases, invest all money. Otherwise, sell all.
 
+Buy or sell by a weight = rate of change of price = \
+```math
+SE = \frac{y_{t+1}-y_t}{y_t}
+```
 
-
-
-
-
-
-
+If the prediction increases, invest a proportion (weights) of money. Otherwise, sell a proportion (weights) of stocks.
+Daily investment with one share:
+If  yt+1>yt, buy one share. Otherwise, sell one share.
+Buy and hold:
+Invest all on the first day of the test dataset and sell all in the end.         
 
 
