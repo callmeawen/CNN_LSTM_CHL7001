@@ -2,8 +2,8 @@
 Predicting stock price using historical data of a company, using Neural networks (LSTM).
 unfinished 
 ## Table of content
+* [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
-* [Acknowledgement](#acknowledgement)
 * [The data](#thedata)
     * [Correlated assets](#corrassets)
     * [Technical indicators](#technicalind)
@@ -44,4 +44,38 @@ unfinished
 * [What is next?](#whatisnext)
 * [Disclaimer](#disclaimer)
 
-# 1. Introduction <a class="anchor" id="overview"></a>
+# 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
+Stock return forecasting is one of the core issues in financial research. It is closely related to many important financial issues, such as portfolio management, capital cost and market efficiency.The financial market tremendously impacts our daily lives in many perspectives. Our group wants to forecast the stock through the sequential data. People invest in exchange-traded funds against the inflation rate. Netflix produces TV series to reveal Wall Street’s life. Time series forecasting is one of the most challenging missions by deep learning. In this research, we aim to find an appropriate model for stock price prediction along with a profit-maximizing trading strategy. Long short term memory is the main technique used on the targets of stock price of two corporations: The Procter & Gamble Company and Bank of America. As comparison, some data de-noising is finished by one-dimension residual convolutional networks before passing into the LSTM as input features. Final results show that CNN successfully tackles random noise problems and uncertain information in time series but a single LSTM expresses a better performance.
+
+Honestly speaking, we would like to apply netural networks on stock data to make some prediction on stock price. Try to find some chances to earn some money in the market. This is our inital thoughts. 
+# 2. Introduction <a class="anchor" id="overview"></a>
+Many parametric approaches are developed but fail to produce precise results. Instead, long short term memory in deep learning allows nonlinear characters and leads to a higher predictive accuracy. Some researchers also utilize the convolutional neural networks to solve the problem of noise in the waveform data. Our group aims to compare the prediction of future prices of The Procter & Gamble Company (PG) and Bank of America (BAC). The work is done by grid search on different parameters for LSTM only or combined CNN & LSTM model
+
+## 2.1. Idea of financial Market: 
+
+"Buy low, sell high" is the oldest and the most famous criterion in the market. However, the real world is more complicated. In order to mimic transactions as close as the reality, four trading strategies are developed. In other words, the ultimate objective of this experiment is to maximize profits based on the outputs and strategies.
+
+# 3. Dataset <a class="anchor" id="thedata"></a>
+
+Our group aims to compare the prediction of future prices of The Procter & Gamble Company (PG) and Bank of America (BAC). The work is done by grid search on different parameters for LSTM only or combined CNN & LSTM model. By understanding the behaviors of the stock, investors may improve their investment decisions.
+
+```python
+import numpy as np
+import pandas as pd
+import yfinance as yf
+import ta as ta
+from ta import add_all_ta_features
+from ta.utils import dropna
+from ta.volatility import BollingerBands
+import tensorflow as tf
+from pandas_datareader import data as pdr
+import matplotlib.pyplot as plt
+import tensorflow as tf
+import torch
+
+data = yf.download("PG", start="2017-01-01", end="2019-01-01")
+data2 = yf.download("SPY", start="2017-01-01", end="2019-01-01")
+pd.DataFrame(data)
+```
+
+Our data is the historical daily stock price of PG and BAC from 01/01/2017 to 01/01/2019, downloaded from Yahoo Finance. The dataset 
