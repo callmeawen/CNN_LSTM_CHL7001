@@ -80,4 +80,4 @@ pd.DataFrame(data)
 
 Our data is the historical daily stock price of PG and BAC from 01/01/2017 to 01/01/2019, downloaded from Yahoo Finance. The datasets include a daily open price, the daily highest price, the daily lowest price, a close price, an adjusted close price and the volume.
 
-<center><img src='pics/sampledata.png' width=1060></img></center>
+<center><img src='pics/sampledata.PNG' width=500></img></center>
