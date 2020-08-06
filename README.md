@@ -96,6 +96,8 @@ Four trading algorithms are developed with an initial capital of $1000 in the re
 
 # 5. Results <a class="anchor" id="Result"></a>
 
+We used permutation method before, and with permutation 
+
 ## 5.1 Test data against Predicted values in PG and BAC
 
 ## 5.2 Loss function comparison
