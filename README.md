@@ -120,7 +120,7 @@ Our purpose is to use CNN to make the factors in stock can be integrated and pro
 
 ## 5.3 Test the earnings in using different models and strategies
 
-<center><img src='pics/5.3png' width=500></img></center>
+<center><img src='pics/5.3.png' width=500></img></center>
 
 Table 2 is the rate of return using 4 strategies. Most of the rates of return are positive using all in strategy, however this trading strategy is risky because people are likely to lose the majority of principles in early stages if the model prediction is not accurate enough. The second and third approach are both conservative, but the daily investment method can test if our model is correctly predicted on the trends, and this strategy can be said as the best one and proves that LSTM performs relatively better than CNN.
 
