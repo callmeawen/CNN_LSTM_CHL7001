@@ -1,5 +1,5 @@
 # Stock-Price-Prediction
-
+If you would like to try our code, just download all and run the main file.
 ## Table of content
 * [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
