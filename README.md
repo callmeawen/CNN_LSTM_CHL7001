@@ -1,6 +1,5 @@
 # Stock-Price-Prediction
-Predicting stock price using historical data of a company, using Neural networks (LSTM).
-unfinished 
+
 ## Table of content
 * [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
@@ -110,8 +109,8 @@ The black line represents our test data, the solid line is the result of using C
 ## 5.2 Loss function comparison
 
 
-<center><img src='pics/5.2.1.png' width=500></img></center>
-<center><img src='pics/5.2.2.png' width=500></img></center>
+<center><img src='pics/5.2.1.png' width=500 diplay:inline></img></center>
+<center><img src='pics/5.2.2.png' width=500 diplay:inline></img></center>
 
 <center><img src='pics/5.2.2.1.png' width=500></img></center>
 <center><img src='pics/5.2.2.2.png' width=500></img></center>
