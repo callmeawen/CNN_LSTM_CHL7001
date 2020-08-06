@@ -91,19 +91,6 @@ CNN is famous for diagram recognization. But Can be also used in dimentional red
 ## 4.4 Test trading  <a class="anchor" id="trading"></a>
 
 Four trading algorithms are developed with an initial capital of $1000 in the research in comparison of the rate of returns by different models and parameters. 
-All in or all out: 
 
-If the prediction increases, invest all money. Otherwise, sell all.
-
-Buy or sell by a weight = rate of change of price = \
-```math
-SE = \frac{y_{t+1}-y_t}{y_t}
-```
-
-If the prediction increases, invest a proportion (weights) of money. Otherwise, sell a proportion (weights) of stocks.
-Daily investment with one share:
-If  yt+1>yt, buy one share. Otherwise, sell one share.
-Buy and hold:
-Invest all on the first day of the test dataset and sell all in the end.         
-
+<center><img src='pics/strategy.png' width=500></img></center>
 
