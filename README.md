@@ -95,3 +95,14 @@ Four trading algorithms are developed with an initial capital of $1000 in the re
 <center><img src='pics/strategy.png' width=500></img></center>
 
 # 5. Results <a class="anchor" id="Result"></a>
+
+## 5.1 Test data against Predicted values in PG and BAC
+
+## 5.2 Loss function comparison
+
+## 5.3 Test the earnings in using different models and strategies
+
+# 6. Conclusion and Discussion <a class="anchor" id="Result"></a>
+
+In summary, we address the implementation and the comparison of CNN and LSTM to financial time series prediction. As results discussed above, the strategy based on the prediction of a single LSTM outperforms with a relatively higher cumulative returns. One of the reasons that impacts of CNN are not obvious is a lack of features and noises in this experiment. Due to the computational limitation, a limited number of model parameters is trained. Therefore, future study will introduce more random noises and parameters values. Also, we can build more professional trading algorithms with prior knowledge to create profitable portfolios, then we can step up some API calls to create real accounts to perform day trading in the real market. 
+
