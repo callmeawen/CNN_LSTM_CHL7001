@@ -10,7 +10,7 @@ unfinished
     * [Model Explanation LSTM continued](#Model.c)
     * [1D-CNN](#cnn)
     * [Test trading](#trading)
-* [What is next?](#whatisnext)
+* [Results](#Result)
 * [Disclaimer](#disclaimer)
 
 # 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
@@ -94,3 +94,4 @@ Four trading algorithms are developed with an initial capital of $1000 in the re
 
 <center><img src='pics/strategy.png' width=500></img></center>
 
+# 5. Results <a class="anchor" id="Result"></a>
