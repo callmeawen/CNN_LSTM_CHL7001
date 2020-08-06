@@ -11,6 +11,7 @@ unfinished
     * [1D-CNN](#cnn)
     * [Test trading](#trading)
 * [Results](#Result)
+* [Conclusion](#Conclusion)
 * [Disclaimer](#disclaimer)
 
 # 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
@@ -96,15 +97,34 @@ Four trading algorithms are developed with an initial capital of $1000 in the re
 
 # 5. Results <a class="anchor" id="Result"></a>
 
-We used permutation method before, and with permutation 
+We used permutation method before, and with permutation every steps and every movement can be perfectly predicted. But the method could be somehow not correct. Therefore we get rid of permutation. 
 
 ## 5.1 Test data against Predicted values in PG and BAC
 
+
+<center><img src='pics/5.1.1.png' width=500></img></center>
+<center><img src='pics/5.1.2.png' width=500></img></center>
+
+The black line represents our test data, the solid line is the result of using CNN combined with the LSTM model, and the dotted line is the result of using only the LSTM model. Different colors represent different memory times in our model. From the images, we can see that the prediction value of LSTM model is closer to our test value than that of CNN + LSTM, showing that LSTM performs better. In terms of prediction trend accuracy, both models have overall good trend prediction, In terms of trend prediction, the performance of the two models is generally good. There is no obvious difference in prediction when adjusting memory time. 
+
 ## 5.2 Loss function comparison
+
+
+<center><img src='pics/5.2.1.png' width=500></img></center>
+<center><img src='pics/5.2.2.png' width=500></img></center>
+
+<center><img src='pics/5.2.2.1.png' width=500></img></center>
+<center><img src='pics/5.2.2.2.png' width=500></img></center>
+
+Our purpose is to use CNN to make the factors in stock can be integrated and produce the effect of dimension reduction, so as to achieve the effect of denoise. From table 1, No matter which timestep is used, the MSE of CNN with LSTM model is higher than CNN & LSTM. From the image of loss function, we can also find that the LSTM model converges faster than CNN & LSTM and MSE is relatively smaller.
 
 ## 5.3 Test the earnings in using different models and strategies
 
-# 6. Conclusion and Discussion <a class="anchor" id="Result"></a>
+<center><img src='pics/5.3png' width=500></img></center>
+
+Table 2 is the rate of return using 4 strategies. Most of the rates of return are positive using all in strategy, however this trading strategy is risky because people are likely to lose the majority of principles in early stages if the model prediction is not accurate enough. The second and third approach are both conservative, but the daily investment method can test if our model is correctly predicted on the trends, and this strategy can be said as the best one and proves that LSTM performs relatively better than CNN.
+
+# 6. Conclusion and Discussion <a class="anchor" id="Conclusion"></a>
 
 In summary, we address the implementation and the comparison of CNN and LSTM to financial time series prediction. As results discussed above, the strategy based on the prediction of a single LSTM outperforms with a relatively higher cumulative returns. One of the reasons that impacts of CNN are not obvious is a lack of features and noises in this experiment. Due to the computational limitation, a limited number of model parameters is trained. Therefore, future study will introduce more random noises and parameters values. Also, we can build more professional trading algorithms with prior knowledge to create profitable portfolios, then we can step up some API calls to create real accounts to perform day trading in the real market. 
 
