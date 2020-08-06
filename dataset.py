@@ -23,7 +23,7 @@ def dataset1():
     Traders use them to study the short-term price movement since they do not prove very useful for long-term investors. They are employed primarily to predict future price levels.
     """
 
-    data = yf.download("PG", start="2017-01-01", end="2019-01-01")
+    data = yf.download("BAC", start="2017-01-01", end="2019-01-01")
     data2 = yf.download("SPY", start="2017-01-01", end="2019-01-01")
     pd.DataFrame(data['Close']).plot()
     plt.grid(True)

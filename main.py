@@ -24,9 +24,11 @@ def train(x_train, y_train, x_val, y_val):
 
     time.tzset()
     print("Building model...")
-    # print("checking if GPU available", K.tensorflow_backend._get_available_gpus())
-    model = create_lstm_model()
+
+    # comment here to change models
+    # model = create_cnn_model()
     # model = create_lstm_model()
+    model = create_cnn_lstm_model()
 
     es = EarlyStopping(monitor='val_loss', mode='min', verbose=1,
                        patience=40, min_delta=0.00001)
@@ -35,7 +37,6 @@ def train(x_train, y_train, x_val, y_val):
                           "best_model.h5"), monitor='val_loss', verbose=1,
                           save_best_only=True, save_weights_only=False, mode='min', period=1)
 
-    # Not used here. But leaving it here as a reminder for future
     r_lr_plat = ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=30,
                                   verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
 
@@ -45,8 +46,6 @@ def train(x_train, y_train, x_val, y_val):
                         shuffle=False, validation_data=(x_val, y_val), callbacks=[es, mcp, csv_logger])
     loss_history = history_callback.history['loss']
 
-    # print("saving model...")
-    # pickle.dump(model, open("lstm_model", "wb"))
     return model, loss_history
 
 def predict(x_test, y_test=None, model=None):
@@ -55,8 +54,6 @@ def predict(x_test, y_test=None, model=None):
 
     y_pred = model.predict(x_test, batch_size=BATCH_SIZE)
     y_pred = y_pred.flatten()
-    # print(x_test.shape, y_pred.shape)
-    # exit()
 
     if y_test is not None:
         print(y_pred.shape, y_test.shape)
@@ -83,23 +80,12 @@ if __name__ == '__main__':
 
     ## model training
     model, loss_history = train(x_train, y_train, x_val, y_val)
-    plt.close()
-    plt.plot(np.array(loss_history))
-    plt.title('CNN_LSTM: loss')
-    plt.grid(True)
-    plt.show()
-    loss_28 = np.array(loss_history)
-    # print("loss is", np.array(loss_history))
 
-    ## prediction: load model, OUTPUT_PATH(model path)
-    # model = load_model(os.path.join(OUTPUT_PATH, 'best_model.h5'))
-    # predict(x_val, y_val, model)
     y_pred = predict(x_test, y_test, model)
 
 
-    invert = y_pred * (94.4000015258789 - 70.94000244140625) + 70.94000244140625
-    invert_CNN_4 = invert
-    ytest_invert = y_test * (96.63999938964844 - 70.94000244140625) + 70.94000244140625
+    invert = y_pred * (32.84000015258789 - 22.049999237060547) + 22.049999237060547
+    ytest_invert = y_test * (32.84000015258789 - 22.049999237060547) + 22.049999237060547
 
     ## graph
     plt.close()
@@ -109,7 +95,7 @@ if __name__ == '__main__':
     #print(y_test)
     plt.plot(T, ytest_invert, lw=1, label='test')
     plt.plot(T, invert, lw=1, label='pred', color='red')
-    plt.title('CNN_LSTM Model test vs pred')
+    plt.title('CNN Model test vs pred')
     plt.legend(loc=2, prop={'size': 11})
     plt.grid(True)
     plt.show()
@@ -137,7 +123,7 @@ for i in range(48):
         unit = unit - sell_unit
         sell_price = sell_unit * ytest_invert[i]
         money = money + sell_price
-# profit is 116.51506456659445
+
 profit2 = (money + unit * ytest_invert[49] - 1000)/1000
 
 # method 1 for stock PG (all in/all out) earn more but loss more
@@ -173,32 +159,60 @@ for i in range(48):
 
 print(profit1,profit2,profit3, r)
 
-plt.plot(loss_CNN_4, lw=1, label='time steps: 4', color='black')
-plt.plot(loss_CNN_12, lw=1, label='time steps: 12', color='green')
-plt.plot(loss_CNN_20, lw=1, label='time steps: 20', color='blue')
-plt.plot(loss_CNN_28, lw=1, label='time steps: 28', color='red')
-plt.plot(loss_4, "r--", label='time steps: 4', color='black')
-plt.plot(loss_12, "r--", label='time steps: 12', color='green')
-plt.plot(loss_20, 'r--', label='time steps: 20', color='blue')
-plt.plot(loss_28, 'r--', label='time steps: 28', color='red')
-plt.title('CNN_LSTM against LSTM loss plot')
+loss_CL_24 = np.array(loss_history)
+invert_CL_24 = invert
+
+plt.plot(loss_CNN_4, lw=1,label='CNN', color='green')
+plt.plot(loss_LSTM_4, lw=1, label='LSTM', color='red')
+plt.plot(loss_CL_4, lw=1, label='CNN & LSTM', color='blue')
+plt.title('loss plot: time steps =4')
 plt.legend(loc=1, prop={'size': 11})
 plt.grid(True)
 plt.show()
 ####
 
 plt.plot(ytest_invert, lw=1, label='test', color='black')
-plt.plot(invert_CNN_4, lw=1, label='time steps: 12', color='green')
-plt.plot(invert_CNN_12, lw=1, label='time steps: 12', color='green')
-plt.plot(invert_CNN_20, lw=1, label='time steps: 20', color='blue')
-plt.plot(invert_CNN_28, lw=1, label='time steps: 28', color='red')
-plt.plot(invert_4, "r--", label='time steps: 4', color='black')
-plt.plot(invert_12, "r--", label='time steps: 12', color='green')
-plt.plot(invert_20, 'r--', label='time steps: 20', color='blue')
-plt.plot(invert_28, 'r--', label='time steps: 28', color='red')
-plt.title('TEST VS PRED')
+plt.plot(invert_CNN_4, lw=1, label='CNN', color='green')
+plt.plot(invert_LSTM_4, lw=1, label='LSTM', color='red')
+plt.plot(invert_CL_4, lw=1, label='CNN & LSTM', color='blue')
+plt.title('TEST VS PRED: time steps =4')
 plt.legend(loc=3, prop={'size': 8})
+plt.grid(True)
+plt.show()
+
+
+plt.plot(loss_CNN_14, lw=1,label='CNN', color='green')
+plt.plot(loss_LSTM_14, lw=1, label='LSTM', color='red')
+plt.plot(loss_CL_14, lw=1, label='CNN & LSTM', color='blue')
+plt.title('loss plot: time steps =14')
+plt.legend(loc=1, prop={'size': 11})
 plt.grid(True)
 plt.show()
 ####
 
+plt.plot(ytest_invert, lw=1, label='test', color='black')
+plt.plot(invert_CNN_14, lw=1, label='CNN', color='green')
+plt.plot(invert_LSTM_14, lw=1, label='LSTM', color='red')
+plt.plot(invert_CL_14, lw=1, label='CNN & LSTM', color='blue')
+plt.title('TEST VS PRED: time steps =14')
+plt.legend(loc=3, prop={'size': 8})
+plt.grid(True)
+plt.show()
+
+plt.plot(loss_CNN_24, lw=1,label='CNN', color='green')
+plt.plot(loss_LSTM_24, lw=1, label='LSTM', color='red')
+plt.plot(loss_CL_24, lw=1, label='CNN & LSTM', color='blue')
+plt.title('loss plot: time steps =24')
+plt.legend(loc=1, prop={'size': 11})
+plt.grid(True)
+plt.show()
+####
+
+plt.plot(ytest_invert, lw=1, label='test', color='black')
+plt.plot(invert_CNN_24, lw=1, label='CNN', color='green')
+plt.plot(invert_LSTM_24, lw=1, label='LSTM', color='red')
+plt.plot(invert_CL_24, lw=1, label='CNN & LSTM', color='blue')
+plt.title('TEST VS PRED: time steps =24')
+plt.legend(loc=3, prop={'size': 8})
+plt.grid(True)
+plt.show()
