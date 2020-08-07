@@ -138,8 +138,7 @@ The black line represents our test data, the solid line is the result of using C
 <center><img src='pics/5.2.1.png' width=500 diplay:inline></img></center>
 <center><img src='pics/5.2.2.png' width=500 diplay:inline></img></center>
 
-<center><img src='pics/5.2.2.1.png' width=300></img></center>
-<center><img src='pics/5.2.2.2.png' width=300></img></center>
+<center><img src='pics/5.2.2.3.png' width=300></img></center>
 
 Our purpose is to use CNN to make the factors in stock can be integrated and produce the effect of dimension reduction, so as to achieve the effect of denoise. From table 1, No matter which timestep is used, the MSE of CNN with LSTM model is higher than CNN & LSTM. From the image of loss function, we can also find that the LSTM model converges faster than CNN & LSTM and MSE is relatively smaller.
 
