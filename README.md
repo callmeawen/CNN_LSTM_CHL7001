@@ -153,7 +153,7 @@ The assessment measurements utilized for correlation are MSE and misfortune to d
 
 ## 5.3 Test the earnings in using different models and strategies
 
-<center><img src='pics/5.3.1.png' width=500></img></center>
+<center><img src='pics/5.3.1.png' width=700></img></center>
 
 Table 2 represents the pace of return utilizing 4 demonstrated techniques above. The majority of the paces of return are sure around 11% utilizing all in/full scale methodology in PG stock, yet this exchanging system is hazardous on the grounds that individuals are probably going to lose most of standards in beginning phases if the model forecast isn't sufficiently exact. Unexpectedly, by taking a gander at BAC pace of profits, most systems will in general have a deficiency. The second and the third calculation are both preservationist, yet the day by day venture technique can test our model expectation on patterns as it exceptionally relies upon value developments every day. Concerning the last exchanging calculation without utilizing any models, it can create benefits if and just if the general pattern is expanding. Generally speaking, from the model explicit pace of profits, CNN and LSTM will in general have better execution in exchanging with more income and less money related misfortune.
 
