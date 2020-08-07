@@ -129,8 +129,9 @@ We used permutation method before, and with permutation every steps and every mo
 
 <center><img src='pics/5.1.1.png' width=500></img></center>
 <center><img src='pics/5.1.2.png' width=500></img></center>
+_We only updated 2 pics here with timestep = 4 for both stock_
 
-The black line represents our test data, the solid line is the result of using CNN combined with the LSTM model, and the dotted line is the result of using only the LSTM model. Different colors represent different memory times in our model. From the images, we can see that the prediction value of LSTM model is closer to our test value than that of CNN + LSTM, showing that LSTM performs better. In terms of prediction trend accuracy, both models have overall good trend prediction, In terms of trend prediction, the performance of the two models is generally good. There is no obvious difference in prediction when adjusting memory time. 
+As shown in Figure 7-12, We tuned the time steps of 4, 14 and 24 days to see if the memory time would affect the predictions on three methods. The black line indicates our test data, and the predictive curves for each market index are represented by solid lines in different colors. According to these plots, we observe that the curve of the CNN model is much closer to our actual values than that of the other two approaches. For BAC, the curve of LSTM occasionally derives far from the test values during the test period, while CNN+LSTM performs the worst in most cases. As for PG, the observations are inverse. In terms of price trend prediction, the performance of all three models is generally good. On the other hand, there is no obvious difference in outputs when adjusting memory time. Recall that in the combined model, we employ a CNN before passing into LSTM. We can conclude that CNN successfully brings the benefits of overfitting reduction and data de-noising. Even though, its forecast still turned worse in the end.
 
 ## 5.2 Loss function comparison
 
@@ -142,9 +143,11 @@ The black line represents our test data, the solid line is the result of using C
 
 Our purpose is to use CNN to make the factors in stock can be integrated and produce the effect of dimension reduction, so as to achieve the effect of denoise. From table 1, No matter which timestep is used, the MSE of CNN with LSTM model is higher than CNN & LSTM. From the image of loss function, we can also find that the LSTM model converges faster than CNN & LSTM and MSE is relatively smaller.
 
+The evaluation metrics used for comparison are MSE and loss to reduce potential bias in the analysis. From Table 1, and loss function plots, on average, the lowest MSE was captured in CNN model, and the second best one occurred on the LSTM model for the index BAC. CNN+LSTM has the largest MSE around 0.0125, while its performance ranks the second for the index PG. In some cases, a closer predictive curve does not equal a higher prediction accuracy. Yet the accuracy and the correlation are positively correlated.
+
 ## 5.3 Test the earnings in using different models and strategies
 
-<center><img src='pics/5.3.png' width=500></img></center>
+<center><img src='pics/5.3.1.png' width=500></img></center>
 
 Table 2 illustrates the rate of return using 4 indicated strategies above. Most of the rates of return are positive around 11% using all in/all out strategy in PG stock, but this trading strategy is risky because people are likely to lose the majority of principles in early stages if the model prediction is not accurate enough. On the contrary, by looking at BAC rate of returns, most strategies tend to have a deficit. The second and the third algorithm are both conservative, but the daily investment method can test our model prediction on trends as it highly depends on price movements each day. As for the last trading algorithm without using any models, it can generate profits if and only if the overall trend is increasing. Overall, from the model specific rate of returns, CNN and LSTM tend to have better performance in trading with more earnings and less financial loss.
 
