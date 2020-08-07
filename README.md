@@ -18,6 +18,8 @@ From line 28-31 at main file.
 
 It's already aggregated enough for now, but we can still imporve these using arguements or parse. Due to the time constrat, we will do this next time. 
 
+**We are happy if you can make money using our model, but we are not resposible for any loss if you decide to use the model**
+
 ## Table of content
 * [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
