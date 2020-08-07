@@ -160,11 +160,18 @@ In summary, we address the implementation and the comparison of CNN and LSTM to 
 # 7. References  <a class="anchor" id="references"></a>
 
 Ganegedara, T. (2020, January 1st). Stock Market Predictions with LSTM in Python. Retrieved from DataCamp: https://www.datacamp.com/community/tutorials/lstm-python-stock-market
+
 Geron, A. (2017). Hands-On Machine Learning with Scikit-Learn & TensorFlow.
+
 Guanting Chen, Y. C. (n.d.). Application of Deep Learning to Algorithmic Trading.
+
 Jialin Liu, F. C.-C.-M. (2019). Stock Prices Prediction using Deep Learning Models.
+
 MITCHELL, C. (2020). How to Use a Moving Average to Buy Stocks. Investopedia.
+
 PRANJAL SRIVASTAVA. (2017). Essentials of Deep Learning : Introduction to Long Short Term Memory. Analytics Vidhya.
+
 Ugur Gudelek, A. B. (2017). A deep learning based stock trading model with 2-D CNN trend detection.
+
 Wei Bao, J. Y. (2017). A deep learning framework for financial time series using stacked autoencoders and long-short term memory. National Library of Medicine. Retrieved from National Library of Medicine.
 
