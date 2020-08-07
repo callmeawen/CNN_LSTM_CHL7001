@@ -1,5 +1,23 @@
 # Stock-Price-Prediction
+
 If you would like to try our code, just download all and run the main file.
+
+``` python
+python main.py
+```
+
+There are two things we can adjut for, one is time steps(in parameter called TIMESTEP, need to be even number and greater than 2) and the other one is change model since we have 3 different models. 
+
+``` python
+    # comment here to change models
+    # model = create_cnn_model()
+    # model = create_lstm_model()
+    model = create_cnn_lstm_model()
+```
+from line 28-31 at main file. 
+
+It's already aggregated enough for now, but we can still imporve these using arguements or parse. Due to the time constrat, we will do this next time. 
+
 ## Table of content
 * [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
