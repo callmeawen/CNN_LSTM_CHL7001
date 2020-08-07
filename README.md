@@ -14,7 +14,7 @@ There are two things we can adjut for, one is time steps(in parameter called TIM
     # model = create_lstm_model()
     model = create_cnn_lstm_model()
 ```
-from line 28-31 at main file. 
+From line 28-31 at main file. 
 
 It's already aggregated enough for now, but we can still imporve these using arguements or parse. Due to the time constrat, we will do this next time. 
 
@@ -32,11 +32,11 @@ It's already aggregated enough for now, but we can still imporve these using arg
 * [Disclaimer](#disclaimer)
 
 # 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
-Stock return forecasting is one of the core issues in financial research. It is closely related to many important financial issues, such as portfolio management, capital cost and market efficiency.The financial market tremendously impacts our daily lives in many perspectives. Our group wants to forecast the stock through the sequential data. People invest in exchange-traded funds against the inflation rate. Netflix produces TV series to reveal Wall Street’s life. Time series forecasting is one of the most challenging missions by deep learning. In this research, we aim to find an appropriate model for stock price prediction along with a profit-maximizing trading strategy. Long short term memory is the main technique used on the targets of stock price of two corporations: The Procter & Gamble Company and Bank of America. As comparison, some data de-noising is finished by one-dimension residual convolutional networks before passing into the LSTM as input features. Final results show that CNN successfully tackles random noise problems and uncertain information in time series but a single LSTM expresses a better performance.
+Stock return forecasting is one of the core issues in financial research. It is closely related to many important financial issues, such as portfolio management, capital cost and market efficiency.The financial market tremendously impacts our daily lives in many perspectives. Our group wants to forecast the stock through the sequential data. People invest in exchange-traded funds against the inflation rate. Netflix produces TV series to reveal Wall Street’s life. Time series forecasting is one of the most challenging missions by deep learning. In this research, we aim to find an appropriate model for stock price prediction along with a profit-maximizing trading strategy. Long short term memory is the main technique used on the targets of stock price of two corporations: The Procter & Gamble Company and Bank of America. As comparison, some data de-noising is finished by one-dimension residual convolutional networks before passing into the LSTM as input features.
 
 Honestly speaking, we would like to apply netural networks on stock data to make some prediction on stock price. Try to find some chances to earn some money in the market. This is our inital thoughts. 
 # 2. Introduction <a class="anchor" id="overview"></a>
-Many parametric approaches are developed but fail to produce precise results. Instead, long short term memory in deep learning allows nonlinear characters and leads to a higher predictive accuracy. Some researchers also utilize the convolutional neural networks to solve the problem of noise in the waveform data. Our group aims to compare the prediction of future prices of The Procter & Gamble Company (PG) and Bank of America (BAC). The work is done by grid search on different parameters for LSTM only or combined CNN & LSTM model
+Many parametric approaches are developed but fail to produce precise results. Instead, long short term memory in deep learning allows nonlinear characters and leads to a higher predictive accuracy. Some researchers also utilize the convolutional neural networks to solve the problem of noise in the waveform data. Our group aims to compare the prediction of future prices of The Procter & Gamble Company (PG) and Bank of America (BAC). The work is done by grid search on different parameters for LSTM only, CNN only or combined CNN & LSTM model
 
 ## 2.1. Idea of financial Market: 
 
@@ -106,7 +106,15 @@ As the new information flows through different gates (the input gate zi , the fo
 
 CNN is famous for diagram recognization. But Can be also used in dimentional reduction or feature aggregation. So we are going to pass features into sparse autoencoders with a convolution neural network through a 1 dimension convolution layer and global max-pooling layer before LSTM, we can reduce overfitting and improve forecasting performance if we can.
 
-## 4.4 Test trading  <a class="anchor" id="trading"></a>
+CNN or Convolutional Neural Network is also a big innovation in machine learning, with most applications in image recognition, image classification and natural language processing. However, with recent breakthroughs in data science, some studies show a better performance of convolutional neural networks in stock prices modeling compared with RNN. The advantage is especially reflected in “automatically and adaptively learning in spatial hierarchies of features through a backpropagation algorithm” [Rikiya et al., 2018]. Specifically, if features are not informative enough, they may hinder the extraction. A total number of 5 layers in CNN are constructed.(More details in the report.)
+
+After transformations through each layer, the number of parameters that must be learned are decreased. Therefore, we can reduce the risk of overfitting and improve forecasting performance. 
+
+## 4.4 CNN + LSTM  <a class="anchor" id="cnn"></a>
+
+Traditional methods such as weighted moving average are largely introduced to smooth and de-noise datasets. The one-dimensional convolution is defined in Eq. (2)(detail in the report), where f is the input vector with length n and g is the kernel with length m. According to formula, the convolution operation can be viewed as a smoothing operator if the parameters are all positive, and hence, we propose to employ a CNN as a deeper input gate before LSTM to learn smoothing parameters from the inputs. Note that previous work already shows that by reducing the dimension, an “important” input gate before the LSTM will benefit the modeling of temporal structures of LSTM [Graves et al., 2013; Wu et al., 2018].
+
+## 4.5 Test trading  <a class="anchor" id="trading"></a>
 
 Four trading algorithms are developed with an initial capital of $1000 in the research in comparison of the rate of returns by different models and parameters. 
 
