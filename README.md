@@ -129,6 +129,7 @@ We used permutation method before, and with permutation every steps and every mo
 
 <center><img src='pics/5.1.1.png' width=500></img></center>
 <center><img src='pics/5.1.2.png' width=500></img></center>
+
 _We only updated 2 pics here with timestep = 4 for both stock_
 
 As shown in Figure 7-12, We tuned the time steps of 4, 14 and 24 days to see if the memory time would affect the predictions on three methods. The black line indicates our test data, and the predictive curves for each market index are represented by solid lines in different colors. According to these plots, we observe that the curve of the CNN model is much closer to our actual values than that of the other two approaches. For BAC, the curve of LSTM occasionally derives far from the test values during the test period, while CNN+LSTM performs the worst in most cases. As for PG, the observations are inverse. In terms of price trend prediction, the performance of all three models is generally good. On the other hand, there is no obvious difference in outputs when adjusting memory time. Recall that in the combined model, we employ a CNN before passing into LSTM. We can conclude that CNN successfully brings the benefits of overfitting reduction and data de-noising. Even though, its forecast still turned worse in the end.
