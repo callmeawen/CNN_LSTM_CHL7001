@@ -29,7 +29,7 @@ It's already aggregated enough for now, but we can still imporve these using arg
     * [Test trading](#trading)
 * [Results](#Result)
 * [Conclusion](#Conclusion)
-* [Disclaimer](#disclaimer)
+* [References](#references)
 
 # 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
 Stock return forecasting is one of the core issues in financial research. It is closely related to many important financial issues, such as portfolio management, capital cost and market efficiency.The financial market tremendously impacts our daily lives in many perspectives. Our group wants to forecast the stock through the sequential data. People invest in exchange-traded funds against the inflation rate. Netflix produces TV series to reveal Wall Street’s life. Time series forecasting is one of the most challenging missions by deep learning. In this research, we aim to find an appropriate model for stock price prediction along with a profit-maximizing trading strategy. Long short term memory is the main technique used on the targets of stock price of two corporations: The Procter & Gamble Company and Bank of America. As comparison, some data de-noising is finished by one-dimension residual convolutional networks before passing into the LSTM as input features.
@@ -155,4 +155,16 @@ Table 2 illustrates the rate of return using 4 indicated strategies above. Most 
 # 6. Conclusion and Discussion <a class="anchor" id="Conclusion"></a>
 
 In summary, we address the implementation and the comparison of CNN and LSTM to financial time series prediction. As discussed above, the trading system based on the prediction of a single CNN outperforms with a relatively higher cumulative returns compared to LSTM and CNN+LSTM. One of the reasons that impacts of CNN as a deeper input gate are not obvious is a lack of features and noises in this experiment. Moreover, our study length is only 2 year daily close price, therefore, one of the further improvements is the extension of study length and depth (i.e weekly, hourly trading). Due to the computational limitation, a limited number of model parameters is trained. Thus, future study will also introduce more random noises and parameters values. At the same time, we can take into account the effects of frequent transaction costs, build more professional trading algorithms with prior knowledge to create profitable portfolios, then step up some API calls to create real accounts to perform daily trading in the real market. 
+
+
+# 7. References  <a class="anchor" id="references"></a>
+
+Ganegedara, T. (2020, January 1st). Stock Market Predictions with LSTM in Python. Retrieved from DataCamp: https://www.datacamp.com/community/tutorials/lstm-python-stock-market
+Geron, A. (2017). Hands-On Machine Learning with Scikit-Learn & TensorFlow.
+Guanting Chen, Y. C. (n.d.). Application of Deep Learning to Algorithmic Trading.
+Jialin Liu, F. C.-C.-M. (2019). Stock Prices Prediction using Deep Learning Models.
+MITCHELL, C. (2020). How to Use a Moving Average to Buy Stocks. Investopedia.
+PRANJAL SRIVASTAVA. (2017). Essentials of Deep Learning : Introduction to Long Short Term Memory. Analytics Vidhya.
+Ugur Gudelek, A. B. (2017). A deep learning based stock trading model with 2-D CNN trend detection.
+Wei Bao, J. Y. (2017). A deep learning framework for financial time series using stacked autoencoders and long-short term memory. National Library of Medicine. Retrieved from National Library of Medicine.
 
