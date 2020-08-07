@@ -18,6 +18,8 @@ From line 28-31 at main file.
 
 It's already aggregated enough for now, but we can still imporve these using arguements or parse. Due to the time constrat, we will do this next time. 
 
+**We are happy if you can make money using our model, but we are not resposible for any loss if you decide to use the model**
+
 ## Table of content
 * [Why are we interested in stock price prediction?](#abstract)
 * [Introduction](#overview)
@@ -29,14 +31,17 @@ It's already aggregated enough for now, but we can still imporve these using arg
     * [Test trading](#trading)
 * [Results](#Result)
 * [Conclusion](#Conclusion)
-* [Disclaimer](#disclaimer)
+* [References](#references)
 
 # 1. Why are we interested in stock price prediction? <a class="anchor" id="abstract"></a>
-Stock return forecasting is one of the core issues in financial research. It is closely related to many important financial issues, such as portfolio management, capital cost and market efficiency.The financial market tremendously impacts our daily lives in many perspectives. Our group wants to forecast the stock through the sequential data. People invest in exchange-traded funds against the inflation rate. Netflix produces TV series to reveal Wall Street’s life. Time series forecasting is one of the most challenging missions by deep learning. In this research, we aim to find an appropriate model for stock price prediction along with a profit-maximizing trading strategy. Long short term memory is the main technique used on the targets of stock price of two corporations: The Procter & Gamble Company and Bank of America. As comparison, some data de-noising is finished by one-dimension residual convolutional networks before passing into the LSTM as input features.
+
+Stock return prediction is one of the most attractive issues in money related exploration. It is firmly identified with numerous significant budgetary issues, for example, portfolio the executives, capital expense and market efficiency.The monetary market colossally impacts our every day lives in numerous points of view. Our gathering needs to conjecture the stock through the consecutive information. Individuals put resources into trade exchanged assets against the swelling rate. Netflix produces TV arrangement to uncover Wall Street's life. Time arrangement guaging is one of the most testing missions by profound learning. In this exploration, we expect to locate a proper model for stock value forecast alongside a benefit expanding exchanging technique. Long momentary memory is the principle strategy utilized on the objectives of stock cost of two companies: The Procter and Gamble Company and Bank of America. As examination, a few information de-noising is done by one-dimentional residual convolutional network before going into the LSTM as input features
 
 Honestly speaking, we would like to apply netural networks on stock data to make some prediction on stock price. Try to find some chances to earn some money in the market. This is our inital thoughts. 
+
 # 2. Introduction <a class="anchor" id="overview"></a>
-Many parametric approaches are developed but fail to produce precise results. Instead, long short term memory in deep learning allows nonlinear characters and leads to a higher predictive accuracy. Some researchers also utilize the convolutional neural networks to solve the problem of noise in the waveform data. Our group aims to compare the prediction of future prices of The Procter & Gamble Company (PG) and Bank of America (BAC). The work is done by grid search on different parameters for LSTM only, CNN only or combined CNN & LSTM model
+
+Numerous parametric methodologies are grown however neglect to create exact outcomes. Rather, long momentary memory in profound learning permits nonlinear characters and prompts a higher prescient precision. A few analysts likewise use the convolutional neural systems to tackle the issue of commotion in the waveform information. Our gathering intends to look at the expectation of future costs of The Procter and Gamble Company (PG) and Bank of America (BAC). The work is finished by matrix look on changed boundaries for LSTM just, CNN just or consolidated CNN and LSTM model.
 
 ## 2.1. Idea of financial Market: 
 
@@ -80,7 +85,7 @@ _figure 2: close price for PG_
 _figure 3: close price for BAC_
 
 ## 3.1. Technical indicators <a class="anchor" id="technicalind"></a>
-5 days and 100 days moving averages are applied to smooth temporary and random price fluctuations over time. A buy signal happens when the short-duration MA crosses above the long-duration MA. In professional terms, this is called a "golden cross." On the contrary, the trend of price drops and generates a sell signal when two lines cross the other way. This is known as a "dead cross. " Some other technical indicators tracked are Average True Range, Bollinger Bands, Rate of Change, Force Index, Williams percentage Range and Moving Average Convergence Divergence. The third dataset is the S&P 500 in Figure 5, as a benchmark to represent the overall economy.
+5 days and 100 days moving averages are applied to smooth temporary and random price fluctuations over time. A buy signal happens when the short-duration MA crosses above the long-duration MA. In professional terms, this is called a "golden cross." On the contrary, the trend of price drops and generates a sell signal when two lines cross the other way. This is known as a "dead cross. " Some other technical indicators tracked are Average True Range, Bollinger Bands, Rate of Change, Force Index, Williams percentage Range and Moving Average Convergence Divergence. The third dataset is the S&P 500, as a benchmark to represent the overall economy.
 
 A lot of investors follow technical indicators. We included the most popular indicators as independent features.
 
@@ -130,7 +135,9 @@ We used permutation method before, and with permutation every steps and every mo
 <center><img src='pics/5.1.1.png' width=500></img></center>
 <center><img src='pics/5.1.2.png' width=500></img></center>
 
-The black line represents our test data, the solid line is the result of using CNN combined with the LSTM model, and the dotted line is the result of using only the LSTM model. Different colors represent different memory times in our model. From the images, we can see that the prediction value of LSTM model is closer to our test value than that of CNN + LSTM, showing that LSTM performs better. In terms of prediction trend accuracy, both models have overall good trend prediction, In terms of trend prediction, the performance of the two models is generally good. There is no obvious difference in prediction when adjusting memory time. 
+_We only updated 2 pics here with timestep = 4 for both stock_
+
+As appeared in Figure 7-12, We tuned the time steps of 4, 14 and 24 days to check whether the memory time would influence the expectations on three strategies. The dark line shows our test information, and the prescient bends for each market list are spoken to by strong lines in various hues. As per these plots, we see that the bend of the CNN model is a lot nearer to our genuine qualities than that of the other two methodologies. For BAC, the bend of LSTM sometimes gets a long way from the test esteems during the trial, while CNN+LSTM plays out the most noticeably awful by and large. With respect to PG, the perceptions are backwards. Regarding value pattern expectation, the exhibition of every one of the three models is commonly acceptable. Then again, there is no conspicuous contrast in yields while modifying memory time. Review that in the joined model, we utilize a CNN before going into LSTM. We can presume that CNN effectively brings the advantages of overfitting decrease and information de-noising. Despite the fact that, its gauge despite everything turned more terrible at long last.
 
 ## 5.2 Loss function comparison
 
@@ -140,15 +147,36 @@ The black line represents our test data, the solid line is the result of using C
 
 <center><img src='pics/5.2.2.3.png' width=300></img></center>
 
-Our purpose is to use CNN to make the factors in stock can be integrated and produce the effect of dimension reduction, so as to achieve the effect of denoise. From table 1, No matter which timestep is used, the MSE of CNN with LSTM model is higher than CNN & LSTM. From the image of loss function, we can also find that the LSTM model converges faster than CNN & LSTM and MSE is relatively smaller.
+Our motivation is to utilize CNN to cause the components in stock to can be coordinated and produce the impact of measurement decrease, in order to accomplish the impact of denoise. From table 1, No issue which timestep is utilized, the MSE of CNN with LSTM model is higher than CNN and LSTM. From the picture of misfortune work, we can likewise find that the LSTM model combines quicker than CNN and LSTM and MSE is moderately littler.
+
+The assessment measurements utilized for correlation are MSE and misfortune to decrease likely predisposition in the investigation. All things considered, the least MSE was caught in CNN model, and the second best one happened on the LSTM model for the file BAC. CNN+LSTM has the biggest MSE around 0.0125, while its exhibition positions the second for the list PG. Sometimes, a closer prescient bend doesn't rise to a higher expectation precision. However the precision and the connection are emphatically related.
 
 ## 5.3 Test the earnings in using different models and strategies
 
-<center><img src='pics/5.3.png' width=500></img></center>
+<center><img src='pics/5.3.1.png' width=700></img></center>
 
-Table 2 illustrates the rate of return using 4 indicated strategies above. Most of the rates of return are positive around 11% using all in/all out strategy in PG stock, but this trading strategy is risky because people are likely to lose the majority of principles in early stages if the model prediction is not accurate enough. On the contrary, by looking at BAC rate of returns, most strategies tend to have a deficit. The second and the third algorithm are both conservative, but the daily investment method can test our model prediction on trends as it highly depends on price movements each day. As for the last trading algorithm without using any models, it can generate profits if and only if the overall trend is increasing. Overall, from the model specific rate of returns, CNN and LSTM tend to have better performance in trading with more earnings and less financial loss.
+Table 2 represents the pace of return utilizing 4 demonstrated techniques above. The majority of the paces of return are sure around 11% utilizing all in/full scale methodology in PG stock, yet this exchanging system is hazardous on the grounds that individuals are probably going to lose most of standards in beginning phases if the model forecast isn't sufficiently exact. Unexpectedly, by taking a gander at BAC pace of profits, most systems will in general have a deficiency. The second and the third calculation are both preservationist, yet the day by day venture technique can test our model expectation on patterns as it exceptionally relies upon value developments every day. Concerning the last exchanging calculation without utilizing any models, it can create benefits if and just if the general pattern is expanding. Generally speaking, from the model explicit pace of profits, CNN and LSTM will in general have better execution in exchanging with more income and less money related misfortune.
 
 # 6. Conclusion and Discussion <a class="anchor" id="Conclusion"></a>
 
-In summary, we address the implementation and the comparison of CNN and LSTM to financial time series prediction. As discussed above, the trading system based on the prediction of a single CNN outperforms with a relatively higher cumulative returns compared to LSTM and CNN+LSTM. One of the reasons that impacts of CNN as a deeper input gate are not obvious is a lack of features and noises in this experiment. Moreover, our study length is only 2 year daily close price, therefore, one of the further improvements is the extension of study length and depth (i.e weekly, hourly trading). Due to the computational limitation, a limited number of model parameters is trained. Thus, future study will also introduce more random noises and parameters values. At the same time, we can take into account the effects of frequent transaction costs, build more professional trading algorithms with prior knowledge to create profitable portfolios, then step up some API calls to create real accounts to perform daily trading in the real market. 
+In synopsis, we address the usage and the examination of CNN and LSTM to monetary time arrangement expectation. As talked about over, the exchanging framework dependent on the forecast of a solitary CNN outflanks with a generally higher total returns contrasted with LSTM and CNN+LSTM. One reason that effects of CNN as a more profound information entryway are not clear is an absence of highlights and clamors in this trial. In addition, our investigation length is just multi year every day close cost, in this way, one of the further upgrades is the expansion of study length and profundity (i.e week by week, hourly exchanging). Because of the computational restriction, a set number of model boundaries is prepared. In this manner, future investigation will likewise present more arbitrary clamors and boundaries esteems. Simultaneously, we can consider the impacts of successive exchange costs, construct more expert exchanging calculations with earlier information to make beneficial portfolios, at that point step up certain API calls to make genuine records to perform day by day exchanging the genuine market.
+
+
+# 7. References  <a class="anchor" id="references"></a>
+
+Ganegedara, T. (2020, January 1st). Stock Market Predictions with LSTM in Python. Retrieved from DataCamp: https://www.datacamp.com/community/tutorials/lstm-python-stock-market
+
+Geron, A. (2017). Hands-On Machine Learning with Scikit-Learn & TensorFlow.
+
+Guanting Chen, Y. C. (n.d.). Application of Deep Learning to Algorithmic Trading.
+
+Jialin Liu, F. C.-C.-M. (2019). Stock Prices Prediction using Deep Learning Models.
+
+MITCHELL, C. (2020). How to Use a Moving Average to Buy Stocks. Investopedia.
+
+PRANJAL SRIVASTAVA. (2017). Essentials of Deep Learning : Introduction to Long Short Term Memory. Analytics Vidhya.
+
+Ugur Gudelek, A. B. (2017). A deep learning based stock trading model with 2-D CNN trend detection.
+
+Wei Bao, J. Y. (2017). A deep learning framework for financial time series using stacked autoencoders and long-short term memory. National Library of Medicine. Retrieved from National Library of Medicine.
 
